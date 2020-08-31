@@ -73,5 +73,4 @@ RCT_REMAP_METHOD(findEvents,
   }
 }
 
-
 @end

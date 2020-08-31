@@ -7,7 +7,9 @@ target 'Hello_ReactNative' do
   config = use_native_modules!
 
   use_react_native!(:path => config["reactNativePath"])
-
+  
+  pod 'Reveal-SDK','21', :configurations => ['Debug'] #Reveal21 使用
+  
   target 'Hello_ReactNativeTests' do
     inherit! :complete
     # Pods for testing
