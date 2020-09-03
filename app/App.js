@@ -21,6 +21,9 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import Home from './components/Home'
+import BaseComponents from './components/BaseComponents'
+import ListComponents from './components/ListComponents'
+
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -52,8 +55,10 @@ const App: () => React$Node = () => {
       <StatusBar barStyle={theme.dark ? 'light-content' : 'dark-content'} />
     )} */}
     <StatusBar barStyle="dark-content" />
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName='Home'>
       <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Base" component={BaseComponents} options={{title: 'Base'}}/>
+      <Stack.Screen name="List" component={ListComponents} options={{title: 'List'}}/>
     </Stack.Navigator>
     {/* <StatusBar barStyle="dark-content" />
     <SafeAreaView>

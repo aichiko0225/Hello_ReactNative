@@ -7,7 +7,8 @@ import {
   Text,
   StatusBar,
   FlatList,
-  TouchableOpacity
+  TouchableOpacity,
+  Button
 } from 'react-native';
 
 import {
@@ -15,6 +16,8 @@ import {
   LearnMoreLinks,
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
+import { useNavigation } from '@react-navigation/native';
+
 
 var data = [
   {
@@ -49,6 +52,15 @@ var data = [
 
 class Home extends Component {
 
+  static navigationOptions = {
+    title: 'Home Title',
+  };
+
+  constructor(props) {
+    super(props)
+    this.textPress = this.textPress.bind(this);
+  }
+
   render() {
     return (
       <>
@@ -63,19 +75,47 @@ class Home extends Component {
           )}
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle} onPress={this.textPress}>基础组件</Text>
+              <Text style={styles.sectionTitle} onPress={()=>{this.textPress(0)}}>基础组件</Text>
+              <GoToButton style={styles.sectionButton} screenName='Base' title='基础组件'/>
             </View>
           </View>
-          <LearnMoreLinks/>
+          <View style={styles.body}>
+            <View style={styles.sectionContainer}>
+              <Text style={styles.sectionTitle} onPress={()=>{this.textPress(1)}}>{'FlatList&SectionList'}</Text>
+            </View>
+          </View>
+          {/* <LearnMoreLinks/> */}
         </ScrollView>
       </>
     );
   }
 
-  textPress(params) {
-    alert(222)
-    // navigation.navigate('Home')
+  textPress(index: Number) {
+    const navigation = this.props.navigation;
+    // navigation.navigate('Base')
+    if (index == 0) {
+      navigation.navigate('Base', {
+        itemId: 86,
+        otherParam: 'anything you want here',
+      });
+    } else {
+      navigation.navigate('List', {
+        itemId: 86,
+        otherParam: 'anything you want here',
+      });
+    }
   }
+}
+
+function GoToButton({ screenName, title }) {
+  const navigation = useNavigation();
+
+  return (
+    <Button
+      title={title}
+      onPress={() => navigation.navigate(screenName)}
+    />
+  );
 }
 
 const styles = StyleSheet.create({
@@ -97,6 +137,12 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: '600',
     color: Colors.black,
+  },
+  sectionButton: {
+    fontSize: 24,
+    fontWeight: '600',
+    color: Colors.black,
+    textAlign: "left"
   },
   sectionDescription: {
     marginTop: 8,

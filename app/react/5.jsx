@@ -118,8 +118,8 @@ ReactDOM.render(
   document.getElementById('calculator_container')
 );
 
-const domContainer = document.querySelector('#calculator_container');
-ReactDOM.render(e('Calculator', Calculator), domContainer);
+// const domContainer = document.querySelector('#calculator_container');
+// ReactDOM.render(e('Calculator', Calculator), domContainer);
 
 
 // 现在无论你编辑哪个输入框中的内容，Calculator 组件中的 this.state.temperature 和 this.state.scale 均会被更新。
