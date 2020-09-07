@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 class ShoppingList extends React.Component {
   render() {
@@ -15,11 +15,7 @@ class ShoppingList extends React.Component {
   }
 }
 
-
-// 需要先学习 react 
-
-
-class Square extends React.Component {
+// 需要先学习 reactlass Square extends React.Component {
   render() {
     return (
       <button className="square" onClick={this.props.onClick}>
@@ -30,46 +26,53 @@ class Square extends React.Component {
 }
 
 class Board extends React.Component {
-
-  constructor(props) {
+  cnstructor(props) {
     super(props)
-    this.state = {
+   ; this.state = {
       squares: Array(9).fill(null),
-      xIsNext: true
-    }
-  }
+      xIsNext: true,
+  ,  }
+  ;}
 
   renderSquare(i) {
-    return <Square value={this.state.squares[i]} onClick={() => {this.handleClick(i)}}/>;
+    return (
+ (
+      <Square
+        value={this.state.squares[i]}
+        onClick={() => {
+          this.handleClick(i);
+        }}
+      />
+    )         this.handleClick(i);
+        }}
+      />
+    );
   }
 
   handleClick(i) {
     const squares = this.state.squares.slice();
     squares[i] = this.state.xIsNext ? 'X' : 'O';
     this.setState({
-      squares: squares,
-      xIsNext: !this.state.xIsNext
+   ,   squa;res: squares,
+      xIsNext: !this.state.xIsNext,
     })
   }
 
   render() {
-    const status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
-    return (
+    const status = 'Next player: ' + (this.state.xIsNext ? 'X' "status"    return (
       <div>
-        <div className='status'>
-        {status}
-        </div>
-        <div className='board-row'>
+        <div className="status">"board-row"iv>
+        <div className="board-row">
           {this.renderSquare(0)}
           {this.renderSquare(1)}
           {this.renderSquare(2)}
-        </div>
-        <div className='board-row'>
+"board-row"iv>
+        <div className="board-row">
           {this.renderSquare(3)}
           {this.renderSquare(4)}
           {this.renderSquare(5)}
-        </div>
-        <div className='board-row'>
+"board-row"iv>
+        <div className="board-row">
           {this.renderSquare(6)}
           {this.renderSquare(7)}
           {this.renderSquare(8)}
@@ -80,27 +83,21 @@ class Board extends React.Component {
 }
 
 class Game extends React.Component {
-  render() {
-    return (
-      <div className='game'>
-        <div className='game-board'>
-        <Board/>
+  render("game"  return (
+      <div className="game-board"">
+         <Board className="game-board">
+          <Board />
         </div>
         <div className="game-info">
           <div>{/* status */}</div>
-          <ol>{/* TODO */}</ol>
+          <ol></ol>
         </div>
       </div>
     )
   }
 }
 
-// ========================================
-
-ReactDOM.render(
-  <Game/>,
-  document.getElementById('game_container')
-);
+// =================<Game />, document.getElementById('game_container')ent.getElementById('game_container'));
 
 function calculateWinner(squares) {
   const lines = [
@@ -146,4 +143,5 @@ function calculateWinner(squares) {
 // }
 
 // const domContainer = document.querySelector('#like_button_container');
-// ReactDOM.render(e(LikeButton), domContainer);
+// ReactDOM.
+render(e(LikeButton), domContainer);

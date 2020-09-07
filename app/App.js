@@ -6,61 +6,58 @@
  * @flow strict-local
  */
 
-import 'react-native-gesture-handler';
-import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  StatusBar
-} from 'react-native';
+import 'react-native-gesture-handler'
+import React from 'react'
+import { SafeAreaView, StyleSheet, ScrollView, StatusBar } from 'react-native'
 
-import {
-  Colors,
-  Header,
-} from 'react-native/Libraries/NewAppScreen';
+import { Colors, Header } from 'react-native/Libraries/NewAppScreen'
 
 import Home from './components/Home'
 import BaseComponents from './components/BaseComponents'
 import ListComponents from './components/ListComponents'
 
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
 
-import { NativeModules, NativeEventEmitter } from 'react-native';
-const CalendarManager = NativeModules.CalendarManager;
+import { NativeModules, NativeEventEmitter } from 'react-native'
+const CalendarManager = NativeModules.CalendarManager
 
-CalendarManager.methodAddEvent(
-  'Birthday Party',
-  '4 Privet Drive, Surrey'
-);
+CalendarManager.methodAddEvent('Birthday Party', '4 Privet Drive, Surrey')
 
-CalendarManager.testMethod(); 
+CalendarManager.testMethod()
 
-const calendarManagerEmitter = new NativeEventEmitter(CalendarManager);
+const calendarManagerEmitter = new NativeEventEmitter(CalendarManager)
 
 const subscription = calendarManagerEmitter.addListener(
   'EventReminder',
-  (reminder) => console.log(reminder.name)
-);
+  (reminder) => console.log(reminder.name),
+)
 // 别忘了取消订阅，通常在componentWillUnmount生命周期方法中实现。
-subscription.remove();
+subscription.remove()
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator()
 
 const App: () => React$Node = () => {
   return (
     <NavigationContainer>
-    {/* {Platform.OS === 'ios' && (
+      {/* {Platform.OS === 'ios' && (
       <StatusBar barStyle={theme.dark ? 'light-content' : 'dark-content'} />
     )} */}
-    <StatusBar barStyle="dark-content" />
-    <Stack.Navigator initialRouteName='Home'>
-      <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="Base" component={BaseComponents} options={{title: 'Base'}}/>
-      <Stack.Screen name="List" component={ListComponents} options={{title: 'List'}}/>
-    </Stack.Navigator>
-    {/* <StatusBar barStyle="dark-content" />
+      <StatusBar barStyle="dark-content" />
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen
+          name="Base"
+          component={BaseComponents}
+          options={{ title: 'Base' }}
+        />
+        <Stack.Screen
+          name="List"
+          component={ListComponents}
+          options={{ title: 'List' }}
+        />
+      </Stack.Navigator>
+      {/* <StatusBar barStyle="dark-content" />
     <SafeAreaView>
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
@@ -70,8 +67,8 @@ const App: () => React$Node = () => {
       </ScrollView>
     </SafeAreaView> */}
     </NavigationContainer>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   scrollView: {
@@ -110,6 +107,6 @@ const styles = StyleSheet.create({
     paddingRight: 12,
     textAlign: 'right',
   },
-});
+})
 
-export default App;
+export default App

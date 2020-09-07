@@ -2,12 +2,9 @@
 import React from 'react'
 import { View, Text, Button, StyleSheet, ScrollView, Image } from 'react-native';
 
-import {
-  Colors,
-} from 'react-native/Libraries/NewAppScreen';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 class BaseComponents extends React.Component {
-  
   constructor(props) {
     super(props)
 
@@ -23,7 +20,7 @@ class BaseComponents extends React.Component {
 
     this.state = {
       titleText: "Bird's Nest",
-      bodyText: "This is not really a bird nest."
+      bodyText: 'This is not really a bird nest.',
     };
   }
 
@@ -32,97 +29,115 @@ class BaseComponents extends React.Component {
     // const { itemId } = this.props.route.params;
     // const { otherParam } = this.props.route.params;
     return (
-      <ScrollView 
-      contentInsetAdjustmentBehavior="automatic"
-      style={styles.scrollView}>
-      <View style={ {marginTop: 32, paddingHorizontal: 24} }>
-        {/* <Text>
+      <ScrollView
+        contentInsetAdjustmentBehavior="automatic"
+        style={styles.scrollView}
+      >
+        <View style={{ marginTop: 32, paddingHorizontal: 24 }}>
+          {/* <Text>
         {itemId}
         </Text>
         <Text>
         {otherParam}
         </Text> */}
-        <Button title={'返回'} onPress={()=>{ this.props.navigation.goBack() }} />
-        <Button title={'navigate to Home'} onPress={()=>{ this.props.navigation.navigate('Home') }} />
-      </View>
-      <View style={styles.sectionContainer}>
-        <Text style={styles.sectionTitle}>
-        这里主要是介绍基础组件
-        </Text>
-      </View>
-      <View style={styles.containTextView}>
-        <Text style={styles.containText}>
-        View作为创建 UI 时最基础的组件，View 是一个支持 Flexbox 布局、样式、一些触摸处理、和一些无障碍功能的容器，
-        并且它可以放到其它的视图里，也可以有任意多个任意类型的子视图。
-        </Text>
-        <View
-          style={{
-            flexDirection: "row",
-            height: 100,
-            padding: 20
-          }}>
-          <View style={{ backgroundColor: "blue", flex: 0.3 }} />
-          <View style={{ backgroundColor: "red", flex: 0.5 }} />
-          <Text>Hello World!</Text>
+          <Button
+            title={'返回'}
+            onPress={() => {
+              this.props.navigation.goBack();
+            }}
+          />
+          <Button
+            title={'navigate to Home'}
+            onPress={() => {
+              this.props.navigation.navigate('Home');
+            }}
+          />
         </View>
-
-        <Text style={styles.containText}>
-        {'\n'}
-        Text一个用于显示文本的 React 组件，并且它也支持嵌套、样式，以及触摸处理.
-        </Text>
-        <Text style={styles.baseText}>
-          <Text style={styles.titleText} onPress={this.onPressTitle}>
-            {this.state.titleText}
-            {"\n"}
-            {"\n"}
+        <View style={styles.sectionContainer}>
+          <Text style={styles.sectionTitle}>这里主要是介绍基础组件</Text>
+        </View>
+        <View style={styles.containTextView}>
+          <Text style={styles.containText}>
+            View作为创建 UI 时最基础的组件，View 是一个支持 Flexbox
+            布局、样式、一些触摸处理、和一些无障碍功能的容器，
+            并且它可以放到其它的视图里，也可以有任意多个任意类型的子视图。
           </Text>
-          <Text numberOfLines={5}>{this.state.bodyText}</Text>
-        </Text>
+          <View
+            style={{
+              flexDirection: 'row',
+              height: 100,
+              padding: 20,
+            }}
+          >
+            <View style={{ backgroundColor: 'blue', flex: 0.3 }} />
+            <View style={{ backgroundColor: 'red', flex: 0.5 }} />
+            <Text>Hello World!</Text>
+          </View>
 
-        <Text style={styles.baseText}>
-          I am bold
-          <Text style={styles.innerText}> and red</Text>
-        </Text>
-        <Text>
-        {'\n'}
-        嵌套视图（仅限 iOS）
-        </Text>
-        <Text>
-          There is a blue square
-          <View style={{width: 50, height: 50, backgroundColor: 'steelblue'}} />
-          in between my text.
-        </Text>
+          <Text style={styles.containText}>
+            {'\n'}
+            Text一个用于显示文本的 React
+            组件，并且它也支持嵌套、样式，以及触摸处理.
+          </Text>
+          <Text style={styles.baseText}>
+            <Text style={styles.titleText} onPress={this.onPressTitle}>
+              {this.state.titleText}
+              {'\n'}
+              {'\n'}
+            </Text>
+            <Text numberOfLines={5}>{this.state.bodyText}</Text>
+          </Text>
 
-        <Text style={styles.containText}>
-        {'\n'}
-        Image用于显示多种不同类型图片的 React 组件，包括网络图片、静态资源、临时的本地图片、以及本地磁盘上的图片（如相册）等。
-        </Text>
-        <View style={styles.container}>
-          {/* <Image
+          <Text style={styles.baseText}>
+            I am bold
+            <Text style={styles.innerText}> and red</Text>
+          </Text>
+          <Text>
+            {'\n'}
+            嵌套视图（仅限 iOS）
+          </Text>
+          <Text>
+            There is a blue square
+            <View
+              style={{ width: 50, height: 50, backgroundColor: 'steelblue' }}
+            />
+            in between my text.
+          </Text>
+
+          <Text style={styles.containText}>
+            {'\n'}
+            Image用于显示多种不同类型图片的 React
+            组件，包括网络图片、静态资源、临时的本地图片、以及本地磁盘上的图片（如相册）等。
+          </Text>
+          <View style={styles.container}>
+            {/* <Image
             style={styles.tinyLogo}
             source={require('@expo/snack-static/react-native-logo.png')}
           /> */}
-          <Image
-            style={styles.tinyLogo}
-            source={{uri: 'https://reactnative.dev/img/tiny_logo.png'}}
-          />
-          <Image
-            style={styles.logo}
-            source={{uri: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAAEXRFWHRTb2Z0d2FyZQBwbmdjcnVzaEB1SfMAAABQSURBVGje7dSxCQBACARB+2/ab8BEeQNhFi6WSYzYLYudDQYGBgYGBgYGBgYGBgYGBgZmcvDqYGBgmhivGQYGBgYGBgYGBgYGBgYGBgbmQw+P/eMrC5UTVAAAAABJRU5ErkJggg=='}}
-          />
+            <Image
+              style={styles.tinyLogo}
+              source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }}
+            />
+            <Image
+              style={styles.logo}
+              source={{
+                uri:
+                  'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAAEXRFWHRTb2Z0d2FyZQBwbmdjcnVzaEB1SfMAAABQSURBVGje7dSxCQBACARB+2/ab8BEeQNhFi6WSYzYLYudDQYGBgYGBgYGBgYGBgYGBgZmcvDqYGBgmhivGQYGBgYGBgYGBgYGBgYGBgbmQw+P/eMrC5UTVAAAAABJRU5ErkJggg==',
+              }}
+            />
+          </View>
+          <Text>
+            {'\n'}
+            TextInput 文本输入框。
+          </Text>
+          <Text>
+            {'\n'}
+            ScrollView 可滚动的容器视图。
+          </Text>
         </View>
-        <Text>
-          {'\n'}
-          TextInput 文本输入框。
-        </Text>
-        <Text>
-          {'\n'}
-          ScrollView 可滚动的容器视图。
-        </Text>
-      </View>
       </ScrollView>
     )
-  } 
+  }
 }
 
 const styles = StyleSheet.create({
@@ -147,7 +162,7 @@ const styles = StyleSheet.create({
   },
   containText: {
     color: Colors.black,
-    fontSize: 14
+    fontSize: 14,
   },
   footer: {
     color: Colors.dark,
@@ -158,14 +173,14 @@ const styles = StyleSheet.create({
     textAlign: 'right',
   },
   baseText: {
-    fontFamily: "Cochin"
+    fontFamily: 'Cochin',
   },
   titleText: {
     fontSize: 20,
-    fontWeight: "bold"
+    fontWeight: 'bold',
   },
   innerText: {
-    color: 'red'
+    color: 'red',
   },
   container: {
     paddingTop: 50,

@@ -20,12 +20,8 @@ function FancyBorder(props) {
 function WelcomeDialog() {
   return (
     <FancyBorder color="blue">
-      <h1 className="Dialog-title">
-        Welcome
-      </h1>
-      <p className="Dialog-message">
-        Thank you for visiting our spacecraft!
-      </p>
+      <h1 className="Dialog-title">Welcome</h1>
+      <p className="Dialog-message">Thank you for visiting our spacecraft!</p>
     </FancyBorder>
   );
 }
@@ -39,12 +35,8 @@ function WelcomeDialog() {
 function SplitPane(props) {
   return (
     <div className="SplitPane">
-      <div className="SplitPane-left">
-        {props.left}
-      </div>
-      <div className="SplitPane-right">
-        {props.right}
-      </div>
+      <div className="SplitPane-left">{props.left}</div>
+      <div className="SplitPane-right">{props.right}</div>
     </div>
   );
 }
@@ -59,13 +51,13 @@ function App() {
       right={
         // eslint-disable-next-line react/jsx-no-undef
         <Chat />
-      } />
+      }
+    />
   );
 }
 
 // <Contacts /> 和 <Chat /> 之类的 React 元素本质就是对象（object），所以你可以把它们当作 props，像其他数据一样传递。
 // 这种方法可能使你想起别的库中“槽”（slot）的概念，但在 React 中没有“槽”这一概念的限制，你可以将任何东西作为 props 进行传递。
-
 
 // 特例关系
 
@@ -90,12 +82,37 @@ function App() {
 // 假设我们已经有了一个返回 JSON 的 API，以及设计师提供的组件设计稿。如下所示：
 
 const json = [
-  {category: "Sporting Goods", price: "$49.99", stocked: true, name: "Football"},
-  {category: "Sporting Goods", price: "$9.99", stocked: true, name: "Baseball"},
-  {category: "Sporting Goods", price: "$29.99", stocked: false, name: "Basketball"},
-  {category: "Electronics", price: "$99.99", stocked: true, name: "iPod Touch"},
-  {category: "Electronics", price: "$399.99", stocked: false, name: "iPhone 5"},
-  {category: "Electronics", price: "$199.99", stocked: true, name: "Nexus 7"}
+  {
+    category: 'Sporting Goods',
+    price: '$49.99',
+    stocked: true,
+    name: 'Football',
+  },
+  {
+    category: 'Sporting Goods',
+    price: '$9.99',
+    stocked: true,
+    name: 'Baseball',
+  },
+  {
+    category: 'Sporting Goods',
+    price: '$29.99',
+    stocked: false,
+    name: 'Basketball',
+  },
+  {
+    category: 'Electronics',
+    price: '$99.99',
+    stocked: true,
+    name: 'iPod Touch',
+  },
+  {
+    category: 'Electronics',
+    price: '$399.99',
+    stocked: false,
+    name: 'iPhone 5',
+  },
+  { category: 'Electronics', price: '$199.99', stocked: true, name: 'Nexus 7' },
 ];
 
 // 第一步：将设计好的 UI 划分为组件层级
@@ -112,7 +129,6 @@ const json = [
 // 所以如果你的模型设计得恰当，UI（或者说组件结构）便会与数据模型一一对应，
 // 这是因为 UI 和数据模型都会倾向于遵守相同的信息结构。将 UI 分离为组件，其中每个组件需与数据模型的某部分匹配。
 
-
 // 你会看到我们的应用中包含五个组件。我们已经将每个组件展示的数据标注为了斜体。
 
 // 1. FilterableProductTable (橙色): 是整个示例应用的整体
@@ -120,7 +136,6 @@ const json = [
 // 3. ProductTable (绿色): 展示数据内容并根据用户输入筛选结果
 // 4. ProductCategoryRow (天蓝色): 为每一个产品类别展示标题
 // 5. ProductRow (红色): 每一行展示一个产品
-
 
 // 第二步：用 React 创建一个静态版本
 
@@ -143,7 +158,6 @@ const json = [
 // 如果你的数据模型发生了改变，再次调用 ReactDOM.render()，UI 就会相应地被更新。
 // 数据模型变化、调用 render() 方法、UI 相应变化，这个过程并不复杂，因此很容易看清楚 UI 是如何被更新的，以及是在哪里被更新的。
 // React 单向数据流（也叫单向绑定）的思想使得组件模块化，易于快速开发。
-
 
 // 第三步：确定 UI state 的最小（且完整）表示
 
@@ -194,7 +208,6 @@ const json = [
 
 // 你现在可以看到应用的变化了：将 filterText 设置为 "ball" 并刷新应用，你能发现表格中的数据已经更新了。
 
-
 // 第五步：添加反向数据流
 
 // 到目前为止，我们已经借助自上而下传递的 props 和 state 渲染了一个应用。
@@ -213,7 +226,7 @@ const json = [
 export interface ButtonPropsType {
   type?: 'primary' | 'warning' | 'ghost';
   size?: 'large' | 'small';
-  aaa: String,
+  aaa: String;
   disabled?: boolean;
   loading?: boolean;
 
@@ -222,7 +235,4 @@ export interface ButtonPropsType {
 
 class AClass<ButtonPropsType> {
   a_type = 'primary'
-
-  
 }
-

@@ -1,17 +1,14 @@
 // React 文档
 
-import React from 'react'
+import React from 'react';
 
-ReactDOM.render(
-  <h1>Hello, world!</h1>,
-  document.getElementById('root')
-)
+ReactDOM.render(<h1>Hello, world!</h1>, document.getElementById('root'));
 
 // 它将在页面上展示一个 “Hello, world!” 的标题。
 
 // JSX 简介
 
-const element = <h1>Hello, world!</h1>;
+const element = <h1>Hello, world!</h1>
 // 这个有趣的标签语法既不是字符串也不是 HTML。
 
 // 它被称为 JSX，是一个 JavaScript 的语法扩展。
@@ -20,7 +17,6 @@ const element = <h1>Hello, world!</h1>;
 
 // JSX 可以生成 React “元素”。我们将在下一章节中探讨如何将这些元素渲染为 DOM。
 // 下面我们看下学习 JSX 所需的基础知识。
-
 
 // 为什么使用 JSX？
 // React 认为渲染逻辑本质上与其他 UI 逻辑内在耦合，
@@ -35,33 +31,23 @@ const element = <h1>Hello, world!</h1>;
 
 // 搞清楚这个问题后，我们就开始学习 JSX 吧！
 
-const name = 'Josh Perez';
-const element1 = <h1>Hello, {name}</h1>;
+const name = 'Josh Perez'
+const element1 = <h1>Hello, {name}</h1>
 
-ReactDOM.render(
-  element1,
-  document.getElementById('element1')
-);
+ReactDOM.render(element1, document.getElementById('element1'))
 
 function formatName(user) {
-  return user.firstName + ' ' + user.lastName;
+  return user.firstName + ' ' + user.lastName
 }
 
 const user = {
   firstName: 'Harper',
-  lastName: 'Perez'
-};
+  lastName: 'Perez',
+}
 
-const element2 = (
-  <h1>
-    Hello, {formatName(user)}!
-  </h1>
-);
+const element2 = <h1>Hello, {formatName(user)}!</h1>
 
-ReactDOM.render(
-  element2,
-  document.getElementById('element2')
-);
+ReactDOM.render(element2, document.getElementById('element2'))
 
 // JSX 也是一个表达式
 // 在编译之后，JSX 表达式会被转为普通 JavaScript 函数调用，并且对其取值后得到 JavaScript 对象。
@@ -70,9 +56,9 @@ ReactDOM.render(
 
 function getGreeting(user) {
   if (user) {
-    return <h1>Hello, {formatName(user)}!</h1>;
+    return <h1>Hello, {formatName(user)}!</h1>
   }
-  return <h1>Hello, Stranger.</h1>;
+  return <h1>Hello, Stranger.</h1>
 }
 
 // 警告：
@@ -87,14 +73,10 @@ function getGreeting(user) {
 // Babel 会把 JSX 转译成一个名为 React.createElement() 函数调用。
 // 以下两种示例代码完全等效：
 
-const element3 = (
-  <h1 className="greeting">
-    Hello, world!
-  </h1>
-);
+const element3 = <h1 className="greeting">Hello, world!</h1>
 
 const element4 = React.createElement(
   'h1',
-  {className: 'greeting'},
-  'Hello, world!'
+  { className: 'greeting' },
+  'Hello, world!',
 )

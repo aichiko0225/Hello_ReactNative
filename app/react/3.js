@@ -19,7 +19,6 @@
 
 // 根据我们已有的知识，更新 UI 唯一的方式是创建一个全新的元素，并将其传入 ReactDOM.render()。
 
-
 // 组件 & Props
 
 // 注意： 组件名称必须以大写字母开头。
@@ -48,14 +47,14 @@ function App() {
 ReactDOM.render(
   // eslint-disable-next-line react/react-in-jsx-scope
   <App />,
-  document.getElementById('App')
+  document.getElementById('App'),
 );
 
 // 我们可以为 class 组件声明一些特殊的方法，当组件挂载或卸载时就会去执行这些方法：
 
 // componentDidMount() 方法会在组件已经被渲染到 DOM 中后运行
 
-// componentWillUnmount() 
+// componentWillUnmount()
 
 // 现在时钟每秒都会刷新。
 
@@ -70,15 +69,12 @@ ReactDOM.render(
 // 当 Clock 的输出被插入到 DOM 中后，React 就会调用 ComponentDidMount() 生命周期方法。
 // 在这个方法中，Clock 组件向浏览器请求设置一个计时器来每秒调用一次组件的 tick() 方法。
 
-// 浏览器每秒都会调用一次 tick() 方法。 
+// 浏览器每秒都会调用一次 tick() 方法。
 // 在这方法之中，Clock 组件会通过调用 setState() 来计划进行一次 UI 更新。
 // 得益于 setState() 的调用，React 能够知道 state 已经改变了，然后会重新调用 render() 方法来确定页面上该显示什么。
 
 // 这一次，render() 方法中的 this.state.date 就不一样了，如此以来就会渲染输出更新过的时间。React 也会相应的更新 DOM。
 // 一旦 Clock 组件从 DOM 中被移除，React 就会调用 componentWillUnmount() 生命周期方法，这样计时器就停止了。
-
-
-
 
 // 列表 & Key
 
@@ -86,17 +82,14 @@ const numbers = [1, 2, 3, 4, 5];
 const doubled = numbers.map((number) => number * 2);
 console.log(doubled);
 
-const listItems = numbers.map((number) =>
+const listItems = numbers.map((number) => (
   // eslint-disable-next-line react/jsx-key
   <li>{number}</li>
-);
+));
 
 // 我们把整个 listItems 插入到 <ul> 元素中，然后渲染进 DOM：
 
-ReactDOM.render(
-  <ul>{listItems}</ul>,
-  document.getElementById('root')
-);
+ReactDOM.render(<ul>{listItems}</ul>, document.getElementById('root'));
 
 // 基础列表组件
 // 通常你需要在一个组件中渲染列表。
@@ -105,19 +98,15 @@ ReactDOM.render(
 
 function NumberList(props) {
   const numbers = props.numbers;
-  const listItems = numbers.map((number) =>
-    <li key={number.toString()}>
-      {number}
-    </li>
-  );
-  return (
-    <ul>{listItems}</ul>
-  );
+  const listItems = numbers.map((number) => (
+    <li key={number.toString()}>{number}</li>
+  ));
+  return <ul>{listItems}</ul>;
 }
 
 ReactDOM.render(
   <NumberList numbers={numbers} />,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
 
 // 当我们运行这段代码，将会看到一个警告 a key should be provided for list items，
@@ -139,47 +128,38 @@ function ListItem(props) {
   const value = props.value;
   return (
     // 错误！你不需要在这里指定 key：
-    <li key={value.toString()}>
-      {value}
-    </li>
+    <li key={value.toString()}>{value}</li>
   );
 }
 
 function ANumberList(props) {
   const numbers = props.numbers;
-  const listItems = numbers.map((number) =>
+  const listItems = numbers.map((number) => (
     // 错误！元素的 key 应该在这里指定：
     <ListItem key={number.toString()} value={number} />
-  );
-  return (
-    <ul>
-      {listItems}
-    </ul>
-  );
+  ));
+  return <ul>{listItems}</ul>;
 }
 
 ReactDOM.render(
   <ANumberList numbers={numbers} />,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
-
 
 function Blog(props) {
   const sidebar = (
     <ul>
-      {props.posts.map((post) =>
-        <li key={post.id}>
-          {post.title}
-        </li>
-      )}
+      {props.posts.map((post) => (
+        <li key={post.id}>{post.title}</li>
+      ))}
     </ul>
   );
-  const content = props.posts.map((post) =>
+  const content = props.posts.map((post) => (
     <div key={post.id}>
       <h3>{post.title}</h3>
       <p>{post.content}</p>
     </div>
-  );
+  ));
   return (
     <div>
       {sidebar}
@@ -190,13 +170,10 @@ function Blog(props) {
 }
 
 const posts = [
-  {id: 1, title: 'Hello World', content: 'Welcome to learning React!'},
-  {id: 2, title: 'Installation', content: 'You can install React from npm.'}
+  { id: 1, title: 'Hello World', content: 'Welcome to learning React!' },
+  { id: 2, title: 'Installation', content: 'You can install React from npm.' },
 ];
 
 var arr = [1, 2, 3, 4]
 
-ReactDOM.render(
-  <Blog posts={posts} />,
-  document.getElementById('root')
-);
+ReactDOM.render(<Blog posts={posts} />, document.getElementById('root'));

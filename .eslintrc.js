@@ -9,7 +9,8 @@ module.exports = {
   // extends属性表示启用一系列核心规则，若有plugins属性表示同时启用插件的核心规则
   "extends": [
     "eslint:recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "@react-native-community"
   ],
   "parserOptions": {
     "ecmaFeatures": {
@@ -22,9 +23,8 @@ module.exports = {
     "react"
   ],
   "rules": {
-    // 'react-hooks/rules-of-hooks': 'error',
-    // "semi": ['error', 'never'],
-    // 'react/jsx-one-expression-per-line': 0,
+    'semi': 0,
+    'react/jsx-one-expression-per-line': 0,
     'react/prop-types': 0,
     'no-unused-vars': 0,
     'no-undef': 0,

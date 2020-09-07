@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useState } from 'react'
 import {
   SafeAreaView,
   StyleSheet,
@@ -8,27 +8,26 @@ import {
   StatusBar,
   FlatList,
   TouchableOpacity,
-  Button
-} from 'react-native';
+  Button,
+} from 'react-native'
 
 import {
   Header,
   LearnMoreLinks,
   Colors,
-} from 'react-native/Libraries/NewAppScreen';
-import { useNavigation } from '@react-navigation/native';
-
+} from 'react-native/Libraries/NewAppScreen'
+import { useNavigation } from '@react-navigation/native'
 
 var data = [
   {
-    title: "123"
+    title: '123',
   },
   {
-    title: "123"
+    title: '123',
   },
   {
-    title: "123"
-  }
+    title: '123',
+  },
 ]
 
 // const Item = ({ item, onPress, style }) => (
@@ -51,14 +50,13 @@ var data = [
 // };
 
 class Home extends Component {
-
   static navigationOptions = {
     title: 'Home Title',
-  };
+  }
 
   constructor(props) {
     super(props)
-    this.textPress = this.textPress.bind(this);
+    this.textPress = this.textPress.bind(this)
   }
 
   render() {
@@ -66,7 +64,8 @@ class Home extends Component {
       <>
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
+          style={styles.scrollView}
+        >
           {/* <Header/> */}
           {global.HermesInternal == null ? null : (
             <View style={styles.engine}>
@@ -75,47 +74,62 @@ class Home extends Component {
           )}
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle} onPress={()=>{this.textPress(0)}}>基础组件</Text>
-              <GoToButton style={styles.sectionButton} screenName='Base' title='基础组件'/>
+              <Text
+                style={styles.sectionTitle}
+                onPress={() => {
+                  this.textPress(0)
+                }}
+              >
+                基础组件
+              </Text>
+              <GoToButton
+                style={styles.sectionButton}
+                screenName="Base"
+                title="基础组件"
+              />
             </View>
           </View>
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle} onPress={()=>{this.textPress(1)}}>{'FlatList&SectionList'}</Text>
+              <Text
+                style={styles.sectionTitle}
+                onPress={() => {
+                  this.textPress(1)
+                }}
+              >
+                {'FlatList&SectionList'}
+              </Text>
             </View>
           </View>
           {/* <LearnMoreLinks/> */}
         </ScrollView>
       </>
-    );
+    )
   }
 
   textPress(index: Number) {
-    const navigation = this.props.navigation;
+    const navigation = this.props.navigation
     // navigation.navigate('Base')
-    if (index == 0) {
+    if (index === 0) {
       navigation.navigate('Base', {
         itemId: 86,
         otherParam: 'anything you want here',
-      });
+      })
     } else {
       navigation.navigate('List', {
         itemId: 86,
         otherParam: 'anything you want here',
-      });
+      })
     }
   }
 }
 
 function GoToButton({ screenName, title }) {
-  const navigation = useNavigation();
+  const navigation = useNavigation()
 
   return (
-    <Button
-      title={title}
-      onPress={() => navigation.navigate(screenName)}
-    />
-  );
+    <Button title={title} onPress={() => navigation.navigate(screenName)} />
+  )
 }
 
 const styles = StyleSheet.create({
@@ -142,7 +156,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: '600',
     color: Colors.black,
-    textAlign: "left"
+    textAlign: 'left',
   },
   sectionDescription: {
     marginTop: 8,
@@ -161,7 +175,6 @@ const styles = StyleSheet.create({
     paddingRight: 12,
     textAlign: 'right',
   },
-});
+})
 
-export default Home;
-
+export default Home
