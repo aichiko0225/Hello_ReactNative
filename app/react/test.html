@@ -6,6 +6,7 @@
     content='width=device-width, initial-scale=1.0, maximum-scale=2.0, minimum-scale=1.0, user-scalable=yes'>
   <link href="https://vjs.zencdn.net/7.8.4/video-js.css" rel="stylesheet" />
   <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+  <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
   <style>
     html {
       width: 100%;
@@ -68,34 +69,76 @@
   <div class="title_line"></div>
   </div>
   <div class="content_div">
-    <p></p>
-    <p class="media-wrap video-wrap"></p>
-    <div class="media-wrap video-wrap">
-      <video id="my-video" controls class="video-js" preload="auto"
-        poster="http://vjs.zencdn.net/v/oceans.png" data-setup="{}">
+    <div>
+      <img
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAkCAYAAABIdFAMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAHhJREFUeNo8zjsOxCAMBFB/KEAUFFR0Cbng3nQPw68ArZdAlOZppPFIBhH5EAB8b+Tlt9MYQ6i1BuqFaq1CKSVcxZ2Acs6406KUgpt5/LCKuVgz5BDCSb13ZO99ZOdcZGvt4mJjzMVKqcha68iIePB86GAiOv8CDADlIUQBs7MD3wAAAABJRU5ErkJggg%3D%3D" />
+    </div>
+    <div class="media-wrap image-wrap align-center" style="text-align:center"><img
+        class="media-wrap image-wrap align-center" src="http://123.207.242.245:7600/lq/file/imgRead?id=364"
+        width="363px" height="250px" style="width:363px;height:250px" /></div>
+    <!-- <p class="media-wrap video-wrap"></p> -->
+    <!-- <div class="media-wrap video-wrap">
+      <video id="my-video" controls class="video-js" preload="auto" poster="http://vjs.zencdn.net/v/oceans.png"
+        data-setup="{}">
         <source src="http://27.17.52.250:7600/lq/file/imgRead?id=7108" type="video/mp4">
         </source>
         <source src="http://27.17.52.250:7600/lq/file/imgRead?id=7108" type="video/webm">
         </source>
       </video>
-    </div>
-    <p></p>
-    <p></p>
+    </div> -->
     <!-- {{  video_body }} -->
   </div>
   <script src="https://vjs.zencdn.net/7.8.4/video.js"></script>
-  <script>
-    var overrideNative = false;
-    var player = videojs('my-video', {
-      html5: {
-        hls: {
-          overrideNative: overrideNative
-        },
-        nativeVideoTracks: !overrideNative,
-        nativeAudioTracks: !overrideNative,
-        nativeTextTracks: !overrideNative
+  <script type="text/javascript">
+    // var overrideNative = false;
+    // var player = videojs('my-video', {
+    //   html5: {
+    //     hls: {
+    //       overrideNative: overrideNative
+    //     },
+    //     nativeVideoTracks: !overrideNative,
+    //     nativeAudioTracks: !overrideNative,
+    //     nativeTextTracks: !overrideNative
+    //   }
+    // });
+
+    // 替换图片 src
+    $('img').each(function (i, element) {
+      var srcString = this.getAttribute('src');
+      console.log(srcString)
+      var t_bool = srcString.startsWith('http')
+      let img_id = 'img_id_'+i
+      if (t_bool) {
+        console.log("字符串是以http开头的！")
+        // 如果是http开头，则需要下载img data
+        var t_bool1 = srcString.endsWith('jpg')
+        var t_bool2 = srcString.endsWith('jpeg')
+        var t_bool3 = srcString.endsWith('png')
+        var t_bool4 = srcString.endsWith('gif')
+
+        var tt = t_bool1 || t_bool2 || t_bool3 || t_bool4
+
+        if (tt) {
+          // 如果结尾有具体的类型，也不需要下载data
+        }else {
+          $.get(srcString, function(data,status) {
+            // console.log(data)
+            // console.log(typeof data);
+            var base64EncodedStr = btoa(unescape(encodeURIComponent(data)));
+            // alert("数据: " + data.base64 + "\n状态: " + status);
+            let newSrcString = 'data:image/png;base64,' + base64EncodedStr;
+            console.log(newSrcString)
+            // console.log(encodeURIComponent(newSrcString))
+            $(element).attr("src", newSrcString);
+          });
+        }
+      } else {
+        console.log("字符串不是以http开头的！")
       }
+      // 设置src 属性
+      this.setAttribute('src', srcString);
     });
   </script>
 </body>
+
 </html>
