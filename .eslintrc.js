@@ -4,13 +4,14 @@ module.exports = {
     "es2020": true,
     "es6": true,
     "node": true,
+    "commonjs": true,
   },
   parser: 'babel-eslint',  // Specifies the ESLint parser
   // extends属性表示启用一系列核心规则，若有plugins属性表示同时启用插件的核心规则
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
-    "@react-native-community"
+    "@react-native-community",
   ],
   "parserOptions": {
     "ecmaFeatures": {
@@ -20,7 +21,8 @@ module.exports = {
     "sourceType": "module"
   },
   "plugins": [
-    "react"
+    "react",
+    "html"
   ],
   "rules": {
     'semi': 0,

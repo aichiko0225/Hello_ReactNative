@@ -41,7 +41,7 @@ class TemperatureInput extends React.Component {
       <fieldset>
         <legend>Enter temperature in {scaleNames[scale]}:</legend>
         <input value={temperature}
-               onChange={this.handleChange} />
+          onChange={this.handleChange} />
       </fieldset>
     );
   }
@@ -54,15 +54,15 @@ class Calculator extends React.Component {
     this.handleCelsiusChange = this.handleCelsiusChange.bind(this);
     this.handleFahrenheitChange = this.handleFahrenheitChange.bind(this);
 
-    this.state = {temperature: '', scale: 'c'};
+    this.state = { temperature: '', scale: 'c' }
   }
 
   handleCelsiusChange(temperature) {
-    this.setState({scale: 'c', temperature});
+    this.setState({ scale: 'c', temperature });
   }
 
   handleFahrenheitChange(temperature) {
-    this.setState({scale: 'f', temperature});
+    this.setState({ scale: 'f', temperature });
   }
 
   render() {
@@ -114,7 +114,7 @@ function tryConvert(temperature, convert) {
 const e = React.createElement;
 
 ReactDOM.render(
-  <Calculator/>,
+  <Calculator />,
   document.getElementById('calculator_container')
 );
 

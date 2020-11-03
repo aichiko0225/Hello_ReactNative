@@ -15,7 +15,7 @@ class ShoppingList extends React.Component {
   }
 }
 
-// 需要先学习 reactlass Square extends React.Component {
+class Square extends React.Component {
   render() {
     return (
       <button className="square" onClick={this.props.onClick}>
@@ -27,12 +27,12 @@ class ShoppingList extends React.Component {
 
 class Board extends React.Component {
   cnstructor(props) {
-    super(props)
-   ; this.state = {
+    super(props);
+    this.state = {
       squares: Array(9).fill(null),
       xIsNext: true,
-  ,  }
-  ;}
+    }
+  }
 
   renderSquare(i) {
     return (
@@ -43,7 +43,7 @@ class Board extends React.Component {
           this.handleClick(i);
         }}
       />
-    )         this.handleClick(i);
+      )         this.handleClick(i);
         }}
       />
     );

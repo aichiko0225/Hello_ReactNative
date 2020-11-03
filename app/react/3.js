@@ -172,8 +172,8 @@ function Blog(props) {
 const posts = [
   { id: 1, title: 'Hello World', content: 'Welcome to learning React!' },
   { id: 2, title: 'Installation', content: 'You can install React from npm.' },
-];
+]
 
 var arr = [1, 2, 3, 4]
 
-ReactDOM.render(<Blog posts={posts} />, document.getElementById('root'));
+ReactDOM.render(<Blog posts={posts} />, document.getElementById('root'))
